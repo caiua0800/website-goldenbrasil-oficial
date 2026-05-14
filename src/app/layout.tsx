@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { inter, playfair } from "@/lib/fonts";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { PageTransition } from "@/components/providers/PageTransition";
 import { Cursor } from "@/components/ui/Cursor";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { Nav } from "@/components/layout/Nav";
@@ -47,8 +48,10 @@ export default function RootLayout({
       <body className="bg-[color:var(--color-bg)] text-[color:var(--color-ink)] custom-cursor-active">
         <SmoothScrollProvider>
           <Nav />
-          {children}
-          <Footer />
+          <PageTransition>
+            {children}
+            <Footer />
+          </PageTransition>
         </SmoothScrollProvider>
         <Cursor />
         <GrainOverlay />
